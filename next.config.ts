@@ -14,6 +14,26 @@ const nextConfig: NextConfig = {
         destination: "/about/directors",
         permanent: true,
       },
+      {
+        source: "/scholarship-test",
+        destination: "/etse-2026",
+        permanent: true,
+      },
+      {
+        source: "/about-etse",
+        destination: "/etse-2026",
+        permanent: true,
+      },
+      {
+        source: "/distance-learning-programme",
+        destination: "/courses",
+        permanent: true,
+      },
+      {
+        source: "/distance-learning-program",
+        destination: "/courses",
+        permanent: true,
+      },
     ];
   },
   // Production Security Headers
