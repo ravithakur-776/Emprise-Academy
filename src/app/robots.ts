@@ -11,7 +11,6 @@ const PRIVATE_DISALLOW_PATHS = [
   "/verify-admit-card/",
   "/verify-result",
   "/verify-result/",
-  "/_next/",
 ];
 
 export default function robots(): MetadataRoute.Robots {
@@ -33,7 +32,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 5,
       },
     ],
-    sitemap: "https://www.empriseacademy.com/sitemap.xml",
+    sitemap: "https://empriseacademy.com/sitemap.xml",
   };
 }
 
