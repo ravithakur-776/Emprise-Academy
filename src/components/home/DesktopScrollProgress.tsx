@@ -35,6 +35,7 @@ export const DesktopScrollProgress: React.FC = () => {
     let ticking = false;
 
     const handleScroll = () => {
+      if (window.innerWidth < 1280) return;
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;

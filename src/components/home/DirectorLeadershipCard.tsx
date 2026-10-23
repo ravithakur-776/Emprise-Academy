@@ -113,7 +113,8 @@ export const DirectorLeadershipCard: React.FC<DirectorLeadershipCardProps> = ({
               fill
               sizes="(max-width: 640px) 96px, 112px"
               className="object-cover object-top transition-transform duration-300 ease-out group-hover/card:scale-[1.02]"
-              priority
+              loading="lazy"
+              quality={85}
             />
           </div>
 

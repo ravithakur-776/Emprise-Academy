@@ -97,19 +97,16 @@ async function runSlide4Tests() {
   const heroSliderPath = path.resolve(process.cwd(), "src/components/home/HeroSlider.tsx");
   const heroSliderCode = fs.readFileSync(heroSliderPath, "utf-8");
 
-  if (!heroSliderCode.includes("/images/emprise-neet-ug-2026-result-achievers.png")) {
-    throw new Error("HeroSlider component does not pre-warm the NEET result image");
-  }
-  if (!heroSliderCode.includes("unoptimized")) {
-    throw new Error("HeroSlider must specify unoptimized for master fidelity");
-  }
-  if (!heroSliderCode.includes("quality={100}")) {
-    throw new Error("HeroSlider must specify quality={100}");
-  }
   if (!heroSliderCode.includes("aspectRatio: \"6197 / 2478\"")) {
     throw new Error("HeroSlider must enforce exact aspect ratio 6197 / 2478");
   }
-  console.log("✓ HeroSlider component verified: background pre-warming, unoptimized=true, quality=100, exact aspect ratio.");
+  if (!heroSliderCode.includes("preload={current === 0}") && !heroSliderCode.includes("priority={current === 0}")) {
+    throw new Error("HeroSlider must set preload={current === 0} or priority={current === 0} for initial LCP slide");
+  }
+  if (!heroSliderCode.includes("quality={82}")) {
+    throw new Error("HeroSlider must specify high-fidelity optimized quality={82}");
+  }
+  console.log("✓ HeroSlider component verified: LCP preload on initial slide, Next.js image optimization active, quality=82, exact 6197/2478 aspect ratio.");
 
   // [TEST 5] Auditing Slides 1, 2, 3 Unchanged Integrity
   console.log("\n[TEST 5] Auditing Slides 1, 2, 3 Unchanged Integrity...");
@@ -146,8 +143,8 @@ async function runSlide4Tests() {
       throw new Error(`Slide 5 subheading missing student: ${student}`);
     }
   }
-  if (!heroSliderCode.includes("/images/emprise-top-iit-jee-performers-achievement-legacy.png")) {
-    throw new Error("HeroSlider component does not pre-warm the 5th IIT-JEE performers image");
+  if (slide5.bannerImageSrc !== "/images/emprise-top-iit-jee-performers-achievement-legacy.png") {
+    throw new Error("Slide 5 image source mismatch");
   }
   console.log(`✓ Master image 5 verified on disk: ${stat5.size} bytes.`);
   console.log("✓ Verified Slide 5 metadata, alt text, link destination, and 3 IIT achiever records.");

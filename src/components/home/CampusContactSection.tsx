@@ -48,7 +48,8 @@ export const CampusContactSection: React.FC = () => {
                   alt="Emprise Academy modern academic campus building near Tera Tower, Bhuteshwar Road, Mathura"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
+                  loading="lazy"
+                  quality={80}
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 {/* Subtle top & bottom lighting gradients */}

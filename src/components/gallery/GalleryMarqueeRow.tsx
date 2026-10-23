@@ -39,7 +39,7 @@ export const GalleryMarqueeRow: React.FC<GalleryMarqueeRowProps> = ({
               key={`set1-${img.id}`}
               image={img}
               onClick={() => onImageClick(img)}
-              priority={idx < 4}
+              priority={false}
             />
           ))}
         </div>

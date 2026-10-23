@@ -36,9 +36,29 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Production Security Headers
+  // Next.js High-Performance Image Optimization
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [75, 80, 82, 85, 90],
+  },
+  compress: true,
+  poweredByHeader: false,
+
+  // Production Security & Cache Headers
   async headers() {
     return [
+      {
+        source: "/images/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

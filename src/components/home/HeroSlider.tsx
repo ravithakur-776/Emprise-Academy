@@ -43,24 +43,7 @@ export const HeroSlider: React.FC = () => {
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
-  // Pre-warm remaining banner images in background for instant, zero-lag transitions
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const bannerSrcs = [
-        "/images/emprise-back-to-back-iit-bombay-achievers-2025-2026.png",
-        "/images/emprise-jee-main-2026-top-performers.png",
-        "/images/emprise-neet-ug-2026-result-achievers.png",
-        "/images/emprise-top-iit-jee-performers-achievement-legacy.png",
-        "/images/emprise-legacy-of-neet-excellence-aiims-toppers.png",
-        "/images/emprise-neet-2025-result-top-performers.png",
-        "/images/emprise-jee-advanced-2025-govind-gupta-air-404-iit-bombay.png",
-      ];
-      bannerSrcs.forEach((src) => {
-        const img = new window.Image();
-        img.src = src;
-      });
-    }
-  }, []);
+
 
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -153,9 +136,8 @@ export const HeroSlider: React.FC = () => {
                   alt={slide.bannerImageAlt || "Emprise Academy JEE Main and Advanced 2026 Mathura Toppers"}
                   width={6197}
                   height={2478}
-                  priority
-                  unoptimized
-                  quality={100}
+                  preload={current === 0}
+                  quality={82}
                   className="w-full h-auto object-contain block"
                   style={{
                     aspectRatio: "6197 / 2478",

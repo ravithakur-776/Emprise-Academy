@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/layout/Container";
 import { Section } from "@/components/ui/layout/Section";
 import { Badge } from "@/components/ui/badge/Badge";
@@ -108,11 +109,14 @@ export const TrustIntroSection: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-3.5">
                 {/* Primary Academy Campus & Building Photograph */}
                 <div className="sm:col-span-8 relative h-52 sm:h-64 lg:h-72 rounded-xl sm:rounded-2xl overflow-hidden shadow-xs border border-slate-200/70 bg-slate-100 group">
-                  <img
+                  <Image
                     src="/images/emprise-academy-building-campus.jpg"
                     alt="Emprise Academy Mathura — Modern Coaching Campus and Academic Infrastructure at Bhuteshwar Road"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                    loading="eager"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 60vw, 520px"
+                    loading="lazy"
+                    quality={80}
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#123E73]/85 via-[#123E73]/20 to-transparent" />
 
@@ -137,11 +141,14 @@ export const TrustIntroSection: React.FC = () => {
                 <div className="sm:col-span-4 flex flex-col gap-3">
                   {/* Secondary Student Mentorship & Doubt Solving Photo */}
                   <div className="relative h-28 sm:h-36 rounded-xl overflow-hidden shadow-xs border border-slate-200/70 bg-slate-900 group">
-                    <img
+                    <Image
                       src="/images/emprise-interactive-care-mentorship.jpg"
                       alt="Emprise Academy Mathura — Director-led doubt solving, mentorship and interactive student care"
-                      className="w-full h-full object-cover object-[center_20%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 30vw, 260px"
                       loading="lazy"
+                      quality={80}
+                      className="object-cover object-[center_20%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/75 via-transparent to-transparent pointer-events-none" />
 
@@ -161,11 +168,14 @@ export const TrustIntroSection: React.FC = () => {
 
                   {/* Campus Reception Photo Card */}
                   <div className="relative flex-1 min-h-[120px] sm:min-h-0 rounded-xl overflow-hidden shadow-xs border border-slate-200/70 bg-slate-900 group">
-                    <img
+                    <Image
                       src="/images/emprise-academy-reception-counselling.jpg"
                       alt="Emprise Academy Mathura — Campus Reception, Admissions and Student Counselling Center"
-                      className="w-full h-full object-cover object-[center_35%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 30vw, 260px"
                       loading="lazy"
+                      quality={80}
+                      className="object-cover object-[center_35%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/40 via-transparent to-transparent pointer-events-none" />
 

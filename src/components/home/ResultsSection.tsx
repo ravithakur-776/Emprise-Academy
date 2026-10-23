@@ -271,15 +271,7 @@ export const ResultsSection: React.FC = () => {
     setCurrentIndex(0);
   };
 
-  // Pre-warm result creatives for instant tab and slider navigation
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      MASTER_RESULT_CREATIVES.forEach((item) => {
-        const img = new window.Image();
-        img.src = item.imageSrc;
-      });
-    }
-  }, []);
+
 
   // 5.5s Autoplay with pause on hover/focus/reduced motion
   useEffect(() => {
@@ -463,9 +455,8 @@ export const ResultsSection: React.FC = () => {
                     alt={activeItem.imageAlt}
                     width={6197}
                     height={2478}
-                    priority
-                    unoptimized
-                    quality={100}
+                    loading="lazy"
+                    quality={82}
                     className="w-full h-auto object-contain block transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                     style={{
                       aspectRatio: "6197 / 2478",

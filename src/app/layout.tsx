@@ -7,11 +7,13 @@ import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

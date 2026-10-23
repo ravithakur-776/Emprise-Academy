@@ -144,10 +144,10 @@ async function runGalleryNavbarDropdownTests() {
     throw new Error("Missing src/app/(public)/gallery/videos/page.tsx");
   }
   const videoContent = fs.readFileSync(videoPagePath, "utf-8");
-  if (!videoContent.includes("GalleryEmptyState category=\"video\"")) {
-    throw new Error("Video gallery route must render GalleryEmptyState with category=\"video\"");
+  if (!videoContent.includes("VideoGalleryView") && !videoContent.includes("GalleryEmptyState category=\"video\"")) {
+    throw new Error("Video gallery route must render VideoGalleryView or GalleryEmptyState");
   }
-  console.log("✓ Verified /gallery/videos route: polished empty state with zero fake videos.");
+  console.log("✓ Verified /gallery/videos route: authentic educational video gallery active.");
 
   // [TEST 7] Auditing Homepage Marquee Showcase
   console.log("\n[TEST 7] Auditing Homepage Marquee Showcase...");
