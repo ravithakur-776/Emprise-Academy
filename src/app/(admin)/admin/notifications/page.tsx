@@ -28,7 +28,7 @@ export default function AdminNotificationsPage() {
     {
       id: "n-3",
       title: "ETSE 2026 Registration Milestone",
-      message: "42 student applications verified for ETSE 2026 examination on 25 October 2026.",
+      message: "42 student applications verified for ETSE 2026 examination on 29 November 2026.",
       date: "Yesterday, 06:00 PM",
       isRead: true,
       type: "CAMPAIGN",

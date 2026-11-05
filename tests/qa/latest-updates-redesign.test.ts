@@ -50,7 +50,7 @@ const expectedAnnouncements = [
     id: "up-1",
     category: "ETSE",
     title: "ETSE 2026 Examination Date Confirmed",
-    preview: "Emprise Talent Search Examination will be conducted offline at the Mathura campus on 25 October 2026. Free registration is currently open.",
+    preview: `Emprise Talent Search Examination will be conducted offline at the Mathura campus on 29 November 2026. Free registration is open until 28 November 2026.`,
     href: "/etse-2026",
     isImportant: true,
   },

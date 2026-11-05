@@ -85,7 +85,7 @@ console.log("✓ All administrative, student, and API routes strictly disallowed
 
 // 4. ETSE 2026 Campaign Integrity
 console.log("\n[TEST 4] Auditing ETSE 2026 Campaign Data & Pass Security...");
-const activeExamDate = "2026-10-25";
+const activeExamDate = "2026-11-29";
 const activeEligibility = ["Class 7", "Class 8", "Class 9", "Class 10"];
 const sampleCandidate = {
   examId: "11111111-1111-4111-8111-111111111111",

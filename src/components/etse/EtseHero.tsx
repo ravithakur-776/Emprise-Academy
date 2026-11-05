@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button/Button";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/ui/link/TextLink";
 import { EtseCountdown } from "@/components/etse/EtseCountdown";
 import { MAIN_ETSE_DATA } from "@/data/etse";
-import { ArrowRight, Trophy, Calendar, Award, ShieldCheck, Sparkles } from "lucide-react";
+import { ETSE_CONFIG, isRegistrationOpenInIST } from "@/config/etse";
+import { ArrowRight, Trophy, Calendar, Award, ShieldCheck, Sparkles, Clock, AlertCircle } from "lucide-react";
 
 export interface EtseHeroProps {
   breadcrumbs: BreadcrumbItem[];
@@ -15,6 +16,7 @@ export interface EtseHeroProps {
 
 export const EtseHero: React.FC<EtseHeroProps> = ({ breadcrumbs }) => {
   const { campaign } = MAIN_ETSE_DATA;
+  const isRegOpen = isRegistrationOpenInIST();
 
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-[var(--brand-primary-dark)] via-[#1B4282] to-[#112C57] text-white pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pb-20 border-b border-blue-900/40">
@@ -111,8 +113,8 @@ export const EtseHero: React.FC<EtseHeroProps> = ({ breadcrumbs }) => {
                     </p>
                   </div>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">
-                  Open
+                <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${isRegOpen ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" : "bg-rose-500/20 text-rose-300 border-rose-500/30"}`}>
+                  {isRegOpen ? "Registration Open" : "Registration Closed"}
                 </span>
               </div>
 
@@ -121,6 +123,12 @@ export const EtseHero: React.FC<EtseHeroProps> = ({ breadcrumbs }) => {
                   <span className="text-slate-400 block mb-0.5">Exam Date</span>
                   <span className="font-bold text-amber-300 text-sm">
                     {campaign.examDateDisplay}
+                  </span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                  <span className="text-slate-400 block mb-0.5">Registration Last Date</span>
+                  <span className="font-bold text-amber-300 text-sm">
+                    {ETSE_CONFIG.registrationEndDateDisplay}
                   </span>
                 </div>
                 <div className="p-3 rounded-xl bg-white/5 border border-white/5">
@@ -135,10 +143,10 @@ export const EtseHero: React.FC<EtseHeroProps> = ({ breadcrumbs }) => {
                     Classes 7th to 10th
                   </span>
                 </div>
-                <div className="p-3 rounded-xl bg-white/5 border border-white/5">
-                  <span className="text-slate-400 block mb-0.5">Test Format</span>
+                <div className="p-3 rounded-xl bg-white/5 border border-white/5 col-span-2">
+                  <span className="text-slate-400 block mb-0.5">Test Format & Timing</span>
                   <span className="font-bold text-white text-sm">
-                    Offline (Pen-Paper OMR)
+                    Offline (Pen-Paper OMR) • 10:00 AM – 12:00 PM (IST)
                   </span>
                 </div>
               </div>
@@ -155,12 +163,21 @@ export const EtseHero: React.FC<EtseHeroProps> = ({ breadcrumbs }) => {
               </div>
 
               <div className="pt-2">
-                <a
-                  href="#register"
-                  className="block w-full py-2.5 px-4 rounded-xl bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white text-center text-xs font-bold transition-colors shadow-xs"
-                >
-                  Start Online Registration →
-                </a>
+                {isRegOpen ? (
+                  <a
+                    href="#register"
+                    className="block w-full py-2.5 px-4 rounded-xl bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white text-center text-xs font-bold transition-colors shadow-xs"
+                  >
+                    Start Online Registration →
+                  </a>
+                ) : (
+                  <Link
+                    href="/student/admit-cards"
+                    className="block w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-center text-xs font-bold transition-colors shadow-xs"
+                  >
+                    Download Admit Card →
+                  </Link>
+                )}
               </div>
             </div>
           </div>

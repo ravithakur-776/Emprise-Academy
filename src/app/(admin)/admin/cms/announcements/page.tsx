@@ -6,7 +6,7 @@ import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Badge } from "@/components/ui/badge/Badge";
 import { Button } from "@/components/ui/button/Button";
 import { useToast } from "@/components/ui/toast/ToastProvider";
-import { ETSE_CONFIG } from "@/config/etse";
+import { ETSE_CONFIG, isAnnouncementActiveInIST } from "@/config/etse";
 import {
   Bell,
   ArrowLeft,
@@ -22,13 +22,13 @@ export default function AdminAnnouncementsCmsPage() {
     {
       id: "ann-1",
       title: "ETSE 2026 Registration Open for Classes 7–10",
-      shortText: `Offline Talent Search Exam on ${ETSE_CONFIG.shortDateDisplay}. ₹0 Registration Fee.`,
+      shortText: `Offline Talent Search Exam on ${ETSE_CONFIG.shortDateDisplay}. ₹0 Registration Fee. Last Date: ${ETSE_CONFIG.registrationDeadlineShort}.`,
       ctaText: "Register Now",
       ctaLink: "/etse-2026",
       startDate: "01 August 2026",
-      endDate: "24 October 2026",
+      endDate: "28 November 2026",
       priority: "HIGH",
-      status: "ACTIVE",
+      status: isAnnouncementActiveInIST("28 November 2026", "01 August 2026") ? "ACTIVE" : "EXPIRED",
     },
     {
       id: "ann-2",
@@ -39,7 +39,7 @@ export default function AdminAnnouncementsCmsPage() {
       startDate: "15 August 2026",
       endDate: "15 September 2026",
       priority: "NORMAL",
-      status: "ACTIVE",
+      status: isAnnouncementActiveInIST("15 September 2026", "15 August 2026") ? "ACTIVE" : "EXPIRED",
     },
   ]);
 

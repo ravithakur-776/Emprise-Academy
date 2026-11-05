@@ -7,6 +7,7 @@ import { Text } from "@/components/ui/typography/Text";
 import { Badge } from "@/components/ui/badge/Badge";
 import { Button } from "@/components/ui/button/Button";
 import { HOMEPAGE_DATA } from "@/data/homepage";
+import { ETSE_CONFIG } from "@/config/etse";
 import { Award, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 
 export const ScholarshipSection: React.FC = () => {
@@ -57,7 +58,7 @@ export const ScholarshipSection: React.FC = () => {
                   ETSE 2026 Scholarship
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Appear in the talent search examination on 25 October 2026.
+                  Appear in the talent search examination on {ETSE_CONFIG.examDateDisplay}.
                 </p>
               </div>
 

@@ -106,6 +106,10 @@ export default function AdminEtsePage() {
               Exam Date: {ETSE_CONFIG.examDateDisplay}
             </span>
 
+            <span className="text-xs px-3 py-1.5 rounded-xl bg-blue-100 text-blue-900 font-bold border border-blue-200">
+              Last Date: {ETSE_CONFIG.registrationDeadlineShort}
+            </span>
+
             <Button
               variant="outline"
               size="sm"

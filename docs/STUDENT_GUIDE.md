@@ -11,7 +11,7 @@ Students enrolled at Emprise Academy or registered for the Emprise Talent Search
 ## 2. ETSE 2026 Registration & Admit Card Pass
 1. Register for ETSE 2026 at `https://empriseacademy.com/etse-2026`.
 2. Upon submission, you will receive a unique Application Number (e.g. `ETSE2026-000100`).
-3. Your Admit Card with Roll Number, Exam Date (**25 October 2026**), and Exam Centre address will be accessible under **My Admit Cards** (`/student/admit-cards`).
+3. Your Admit Card with Roll Number, Exam Date (**29 November 2026**), and Exam Centre address will be accessible under **My Admit Cards** (`/student/admit-cards`).
 4. Print your admit card and carry it to your assigned exam venue.
 
 ---

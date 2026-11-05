@@ -5,6 +5,7 @@ import { ValidationError, NotFoundError, DuplicateResourceError } from "@/lib/er
 import { logAuditEvent } from "@/lib/audit";
 import { RegistrationResult } from "@/types/etse";
 import { AdmitCardService } from "@/services/admit-card.service";
+import { getIndiaCalendarDate, ETSE_CONFIG } from "@/config/etse";
 import crypto from "crypto";
 
 export class ETSEService {
@@ -46,9 +47,12 @@ export class ETSEService {
       throw new NotFoundError("ETSE Exam", input.examId || "ETSE2026");
     }
 
-    // Verify registration window is open
-    const today = new Date().toISOString().split("T")[0];
-    if (today < exam.registration_start_date || today > exam.registration_end_date) {
+    // Verify registration window is open using deterministic Indian Standard Time (Asia/Kolkata)
+    const todayInIndia = getIndiaCalendarDate();
+    const regStartDate = exam.registration_start_date || ETSE_CONFIG.registrationStartDate;
+    const regEndDate = exam.registration_end_date || ETSE_CONFIG.registrationEndDate;
+
+    if (todayInIndia < regStartDate || todayInIndia > regEndDate) {
       throw new ValidationError("Registrations for this examination are currently closed.");
     }
 

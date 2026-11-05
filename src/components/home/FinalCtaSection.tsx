@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/layout/Container";
 import { Button } from "@/components/ui/button/Button";
 import { ArrowRight, Sparkles, Phone, Trophy, GraduationCap } from "lucide-react";
+import { ETSE_CONFIG } from "@/config/etse";
 
 export const FinalCtaSection: React.FC = () => {
   return (
@@ -60,7 +61,7 @@ export const FinalCtaSection: React.FC = () => {
 
             <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-200">
               <span className="flex items-center gap-1.5">
-                <Trophy className="w-4 h-4 text-amber-400" /> ETSE Exam: 25 October 2026
+                <Trophy className="w-4 h-4 text-amber-400" /> ETSE Exam: {ETSE_CONFIG.examDateDisplay}
               </span>
               <span>•</span>
               <span>Mathura Campus Classroom Batches</span>

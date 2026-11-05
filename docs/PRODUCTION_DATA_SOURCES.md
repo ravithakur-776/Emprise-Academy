@@ -30,7 +30,7 @@ This document defines the single source of truth for all production entities acr
 ## 2. ETSE 2026 Authoritative Campaign Specifications
 
 - **Campaign Name**: ETSE 2026 (Emprise Talent Search Examination)
-- **Exam Date**: **25 October 2026** (10:00 AM – 01:00 PM, Reporting 09:15 AM)
+- **Exam Date**: **29 November 2026** (10:00 AM – 01:00 PM, Reporting 09:15 AM)
 - **Eligible Classes**: **Classes 7, 8, 9, 10**
 - **Registration Fee**: **FREE**
 - **Exam Mode**: Offline (Pen & Paper at Emprise Academy Campus, Mathura)

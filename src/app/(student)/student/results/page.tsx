@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge/Badge";
 import { Button } from "@/components/ui/button/Button";
 import { createClientBrowser } from "@/lib/supabase/client";
 import { Trophy, Award, Calendar, CheckCircle2, Clock, ArrowRight, ExternalLink, RefreshCw } from "lucide-react";
+import { ETSE_CONFIG } from "@/config/etse";
 
 export default function StudentResultsPage() {
   const router = useRouter();
@@ -165,7 +166,7 @@ export default function StudentResultsPage() {
               </span>
             </div>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
-              Exam Date: 25 October 2026
+              Exam Date: {ETSE_CONFIG.examDateDisplay}
             </span>
           </div>
 

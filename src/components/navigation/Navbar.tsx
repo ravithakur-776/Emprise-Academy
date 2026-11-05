@@ -10,7 +10,7 @@ import { NavLink } from "@/components/ui/link/NavLink";
 import { Drawer } from "@/components/ui/modal/Drawer";
 import { EmpriseLogo } from "@/components/brand/EmpriseLogo";
 import { HOMEPAGE_DATA } from "@/data/homepage";
-import { ETSE_CONFIG } from "@/config/etse";
+import { ETSE_CONFIG, isAnnouncementActiveInIST } from "@/config/etse";
 import { createClientBrowser } from "@/lib/supabase/client";
 import {
   Sparkles,
@@ -59,6 +59,7 @@ export const Navbar: React.FC = () => {
   const [isMobileGalleryOpen, setIsMobileGalleryOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const aboutDropdownRef = React.useRef<HTMLDivElement>(null);
+  const isEtseBannerActive = isAnnouncementActiveInIST(ETSE_CONFIG.registrationEndDate);
 
   // Scroll detection for subtle elevation
   useEffect(() => {
@@ -140,41 +141,43 @@ export const Navbar: React.FC = () => {
       )}
     >
       {/* 1. TOP ANNOUNCEMENT BAR (Deep Institutional Blue #123E73) */}
-      <div className="bg-[var(--brand-primary-dark)] text-white text-[11px] sm:text-xs py-2 px-4 text-center font-medium border-b border-blue-900/40 select-none">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-          {/* Announcement Message & Label */}
-          <div className="flex items-center gap-2 sm:gap-2.5 overflow-hidden truncate">
-            <span className="font-semibold text-white tracking-wide shrink-0">
-              ETSE
-            </span>
-            <span className="hidden md:inline truncate text-slate-200">
-              Emprise Talent Search Examination • Exam on 25 October 2026 • 100% Free Registration Open for Classes 7th to 10th
-            </span>
-            <span className="md:hidden truncate text-slate-200">
-              • Exam: 25 Oct 2026 • Classes 7th–10th • FREE
-            </span>
-          </div>
+      {isEtseBannerActive && (
+        <div className="bg-[var(--brand-primary-dark)] text-white text-[11px] sm:text-xs py-2 px-4 text-center font-medium border-b border-blue-900/40 select-none">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+            {/* Announcement Message & Label */}
+            <div className="flex items-center gap-2 sm:gap-2.5 overflow-hidden truncate">
+              <span className="font-semibold text-white tracking-wide shrink-0">
+                ETSE
+              </span>
+              <span className="hidden md:inline truncate text-slate-200">
+                Free ETSE 2026 Registration — Last Date: 28 November • Exam on 29 November 2026 • Classes 7th to 10th
+              </span>
+              <span className="md:hidden truncate text-slate-200">
+                • Last Date: 28 Nov • Exam: 29 Nov • FREE
+              </span>
+            </div>
 
-          {/* Right Action Links */}
-          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-            <Link
-              href="/etse-2026#register"
-              className="text-amber-300 hover:text-white font-semibold text-xs inline-flex items-center gap-1 transition-colors"
-            >
-              <span>Register Now</span>
-              <ArrowRight className="w-3 h-3" />
-            </Link>
-            <span className="hidden sm:inline text-white/30">|</span>
-            <a
-              href="tel:+917247889955"
-              className="hidden sm:inline-flex items-center gap-1.5 text-slate-300 hover:text-white text-xs transition-colors"
-            >
-              <Phone className="w-3 h-3 text-[var(--brand-accent)]" />
-              <span>+91 7247889955</span>
-            </a>
+            {/* Right Action Links */}
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+              <Link
+                href="/etse-2026#register"
+                className="text-amber-300 hover:text-white font-semibold text-xs inline-flex items-center gap-1 transition-colors"
+              >
+                <span>Register Now</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+              <span className="hidden sm:inline text-white/30">|</span>
+              <a
+                href="tel:+917247889955"
+                className="hidden sm:inline-flex items-center gap-1.5 text-slate-300 hover:text-white text-xs transition-colors"
+              >
+                <Phone className="w-3 h-3 text-[var(--brand-accent)]" />
+                <span>+91 7247889955</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* 2. MAIN NAVBAR (Pure White Background) */}
       <Container size="xl" className="flex items-center justify-between h-18 sm:h-20 lg:h-22 gap-2">
@@ -536,23 +539,25 @@ export const Navbar: React.FC = () => {
       >
         <div className="flex flex-col gap-4 p-4 text-left">
           {/* Top Notice in Drawer */}
-          <div className="p-3.5 rounded-2xl bg-[var(--brand-primary-soft)] border border-blue-200/80 space-y-2">
-            <div className="text-xs font-bold text-[var(--brand-primary-dark)] flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[var(--brand-accent)]" />
-              <span>ETSE 2026 — {ETSE_CONFIG.shortDateDisplay}</span>
+          {isEtseBannerActive && (
+            <div className="p-3.5 rounded-2xl bg-[var(--brand-primary-soft)] border border-blue-200/80 space-y-2">
+              <div className="text-xs font-bold text-[var(--brand-primary-dark)] flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-[var(--brand-accent)]" />
+                <span>ETSE 2026 — {ETSE_CONFIG.shortDateDisplay}</span>
+              </div>
+              <p className="text-[11px] text-[var(--brand-text-secondary)]">
+                100% Free scholarship registration open for Classes 7th to 10th (Last Date: 28 Nov).
+              </p>
+              <Link
+                href="/etse-2026#register"
+                onClick={() => setIsMobileOpen(false)}
+                className="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] hover:underline"
+              >
+                <span>Register for ETSE</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
-            <p className="text-[11px] text-[var(--brand-text-secondary)]">
-              100% Free scholarship registration open for Classes 7th to 10th.
-            </p>
-            <Link
-              href="/etse-2026#register"
-              onClick={() => setIsMobileOpen(false)}
-              className="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] hover:underline"
-            >
-              <span>Register for ETSE</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+          )}
 
           {/* EXACT NAVIGATION ORDER (Mobile Drawer) */}
           <nav className="flex flex-col gap-1 border-b border-[var(--brand-border)] pb-4 text-sm font-semibold" aria-label="Mobile Navigation">

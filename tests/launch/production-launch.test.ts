@@ -26,8 +26,9 @@ if (siteConfig.establishedYear !== 2011) {
 }
 const verifiedEtseCampaign = {
   examTitle: "ETSE 2026",
-  examDate: "2026-10-25",
-  formattedDate: "25 October 2026",
+  examDate: "2026-11-29",
+  formattedDate: "29 November 2026",
+  registrationDeadline: "28 November 2026",
   eligibility: "Classes 7 to 10",
   fee: "FREE",
 };

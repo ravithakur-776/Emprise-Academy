@@ -11,7 +11,7 @@
   - `20260826000001_initial_emprise_schema.sql`
   - `20260826000002_hardening_corrections.sql`
   - `production_seed.sql`
-- **Active Campaign**: ETSE 2026 (Exam Date: 25 October 2026, Eligibility: Classes 7–10, Fee: FREE)
+- **Active Campaign**: ETSE 2026 (Exam Date: 29 November 2026, Eligibility: Classes 7–10, Fee: FREE)
 - **Core Modules Integrated**:
   - Public Academic Website (IIT-JEE, NEET-UG, Foundation)
   - Student Portal & Accounts (`/student`)

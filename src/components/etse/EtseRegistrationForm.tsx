@@ -13,7 +13,7 @@ import { Input, Select } from "@/components/ui/form/Input";
 import { PhoneField } from "@/components/ui/form/SpecializedFields";
 import { useToast } from "@/components/ui/toast/ToastProvider";
 import { createClientBrowser } from "@/lib/supabase/client";
-import { ETSE_CONFIG, formatEtseExamDate } from "@/config/etse";
+import { ETSE_CONFIG, formatEtseExamDate, isRegistrationOpenInIST } from "@/config/etse";
 import {
   Send,
   UserCheck,
@@ -315,6 +315,12 @@ export const EtseRegistrationForm: React.FC = () => {
                   </span>
                   <span className="font-semibold">{examInfo.centreName}</span>
                 </div>
+                <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                  <span className="font-bold text-amber-300 flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5 text-amber-300" /> Registration Last Date
+                  </span>
+                  <span className="font-bold text-amber-300">{ETSE_CONFIG.registrationEndDateDisplay}</span>
+                </div>
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-emerald-400">Application Fee</span>
                   <span className="font-extrabold text-emerald-400">₹0.00 (FREE)</span>
@@ -324,7 +330,28 @@ export const EtseRegistrationForm: React.FC = () => {
 
             {/* Right Column: Registration Form / Skeleton / Success View */}
             <div className="lg:col-span-7 bg-slate-50/80 rounded-2xl border border-slate-200 p-6 sm:p-8">
-              {isLoadingProfile ? (
+              {!isRegistrationOpenInIST() ? (
+                <div className="text-center py-10 px-4 space-y-5 animate-fade-in">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mx-auto shadow-sm">
+                    <Clock className="w-8 h-8" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-slate-900">
+                      Registrations Closed for ETSE 2026
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                      Online registration for the 2026 session officially closed on <strong>{ETSE_CONFIG.registrationEndDateDisplay} at 11:59:59 PM IST</strong>. Registered candidates can access their digital Admit Card with QR verification below.
+                    </p>
+                  </div>
+                  <div className="pt-3">
+                    <Link href="/student/admit-cards">
+                      <Button variant="primary" size="md">
+                        Download Digital Admit Card
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ) : isLoadingProfile ? (
                 <div className="space-y-4 py-4 animate-pulse">
                   <div className="h-6 bg-slate-200 rounded-md w-1/3 mb-4" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

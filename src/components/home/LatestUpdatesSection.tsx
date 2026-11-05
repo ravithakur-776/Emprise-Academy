@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/layout/Container";
 import { Badge } from "@/components/ui/badge/Badge";
 import { HOMEPAGE_DATA, LatestUpdateItem } from "@/data/homepage";
+import { ETSE_CONFIG } from "@/config/etse";
 import { ArrowRight, Bell, Calendar, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ const ANNOUNCEMENT_VISUALS: Record<string, AnnouncementVisualConfig> = {
   "up-1": {
     imageSrc: "/images/announcements/etse-2026-exam-confirmed.jpg",
     imageAlt: "Emprise Academy ETSE 2026 Talent Search Examination",
-    formattedDate: "25 OCT 2026",
+    formattedDate: ETSE_CONFIG.shortDateDisplay.toUpperCase(),
     categoryTag: "ETSE",
   },
   "up-2": {

@@ -3,7 +3,7 @@
  * Single source of truth for Phase 4.8 ETSE Complete Ecosystem
  */
 
-import { ETSE_CONFIG } from "@/config/etse";
+import { ETSE_CONFIG, isRegistrationOpenInIST } from "@/config/etse";
 
 export type EtseCampaignStatus =
   | "DRAFT"
@@ -36,7 +36,7 @@ export interface EtseFaqItem {
 export const MAIN_ETSE_DATA = {
   meta: {
     title: "ETSE 2026 | Emprise Talent Search Examination | Mathura",
-    description: `Register FREE for Emprise Talent Search Examination (ETSE 2026) for Classes 7–10 in Mathura. Exam Date: ${ETSE_CONFIG.examDateDisplay}. Earn merit scholarships, rank benchmarking, and academic recognition.`,
+    description: `Register FREE for Emprise Talent Search Examination (ETSE 2026) for Classes 7–10 in Mathura. Exam Date: ${ETSE_CONFIG.examDateDisplay}. Registration Last Date: ${ETSE_CONFIG.registrationEndDateDisplay}. Earn merit scholarships, rank benchmarking, and academic recognition.`,
     keywords: [
       "ETSE 2026",
       "Emprise Talent Search Examination 2026",
@@ -53,10 +53,12 @@ export const MAIN_ETSE_DATA = {
     shortName: "ETSE 2026",
     tagline: "The Search for Mathura's Brightest Minds",
     subheading: "For Students of Classes 7, 8, 9 & 10",
-    status: "REGISTRATION_OPEN" as EtseCampaignStatus,
+    status: (isRegistrationOpenInIST() ? "REGISTRATION_OPEN" : "REGISTRATION_CLOSED") as EtseCampaignStatus,
     examDateIso: ETSE_CONFIG.examDateIso,
     examDateDisplay: ETSE_CONFIG.examDateDisplay,
     examTimeDisplay: ETSE_CONFIG.examTimeDisplay,
+    registrationDeadline: ETSE_CONFIG.registrationEndDateDisplay,
+    registrationDeadlineShort: ETSE_CONFIG.registrationDeadlineShort,
     registrationFee: "FREE (Zero Application Fee)",
     mode: "Offline (Pen & Paper OMR Format)",
     location: "Mathura, Uttar Pradesh",

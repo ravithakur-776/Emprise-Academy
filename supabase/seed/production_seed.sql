@@ -38,5 +38,5 @@ ON CONFLICT (id) DO NOTHING;
 -- 4. Active ETSE 2026 Campaign Record
 INSERT INTO public.examinations (id, exam_code, title, exam_type, academic_year, exam_date, registration_start_date, registration_end_date, is_active, max_score, created_at, updated_at)
 VALUES
-  ('e1111111-1111-4111-8111-111111111111', 'ETSE-2026', 'Emprise Talent Search Examination 2026', 'ETSE', '2026-27', '2026-10-25', '2026-06-01', '2026-09-01', true, 300, NOW(), NOW())
-ON CONFLICT (id) DO UPDATE SET title = EXCLUDED.title, exam_date = EXCLUDED.exam_date;
+  ('e1111111-1111-4111-8111-111111111111', 'ETSE-2026', 'Emprise Talent Search Examination 2026', 'ETSE', '2026-27', '2026-11-29', '2026-06-01', '2026-11-28', true, 300, NOW(), NOW())
+ON CONFLICT (id) DO UPDATE SET title = EXCLUDED.title, exam_date = EXCLUDED.exam_date, registration_end_date = EXCLUDED.registration_end_date;

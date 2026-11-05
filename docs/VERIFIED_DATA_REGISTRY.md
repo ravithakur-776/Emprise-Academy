@@ -49,7 +49,7 @@
 | :--- | :--- | :--- | :---: | :--- |
 | `etse.name` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.name` | **YES** | `"Emprise Talent Search Examination"` |
 | `etse.short_name` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.short_name` | **YES** | `"ETSE 2026"` |
-| `etse.exam_date` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.exam_date` | **YES** | `"25 October 2026"` |
+| `etse.exam_date` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.exam_date` | **YES** | `"29 November 2026"` |
 | `etse.eligible_classes`| **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.eligible_classes`| **YES** | `["Class 7", "Class 8", "Class 9", "Class 10"]` |
 | `etse.fee` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.fee` | **YES** | `"FREE"` |
 | `etse.mode` | **VERIFIED_OFFICIAL** | `CANONICAL_BUSINESS_CONFIG.etse.mode` | **YES** | `"Offline (Pen & Paper)"` |
@@ -75,4 +75,4 @@
 | :--- | :--- | :--- | :--- |
 | `/design-system` | **DEVELOPMENT_ONLY** | `src/app/design-system` | Isolated sandbox route |
 | Mock Candidate Names (`Aarav Sharma`, `Ishita Agarwal`) | **TEST_ONLY** | `src/services/result-import.service.ts` / Admin preview | Only inside sample CSV template and admin preview modals |
-| Legacy Dates (`21 Sep 2025`, `23 Aug 2026`, `18 Oct 2026`) | **ARCHIVED** | Purged from all production and active campaign files | Zero occurrences in `src/` |
+| Legacy Dates (`21 Sep 2025`, `23 Aug 2026`, `18 Oct 2026`, `25 Oct 2026`) | **ARCHIVED** | Purged from all production and active campaign files | Zero occurrences in `src/` |
